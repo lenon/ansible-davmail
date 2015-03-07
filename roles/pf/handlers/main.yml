@@ -1,0 +1,3 @@
+- name: reload pf
+  service: name=pf state=reloaded
+  sudo: yes
