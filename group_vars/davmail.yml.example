@@ -4,3 +4,9 @@ ansible_ssh_user: freebsd
 pf_open_ports:
   - smtps
   - pop3s
+
+davmail_url: https://outlook.yourcompany.com/owa/
+davmail_pop_port: 995
+davmail_smtp_port: 465
+davmail_pkcs12_pass: password
+davmail_pkcs12_key: /usr/local/etc/davmail/davmail.p12
