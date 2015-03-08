@@ -1,0 +1,3 @@
+- name: restart davmail
+  service: name=davmail state=restarted
+  sudo: yes
