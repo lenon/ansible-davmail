@@ -1,4 +1,4 @@
-# davmail-ansible
+# ansible-davmail
 
 Suppose that you work for a company that uses Outlook as their email solution.
 If you want to sync this email account with another client (like Gmail or
