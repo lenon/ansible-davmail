@@ -2,6 +2,7 @@ ansible_python_interpreter: /usr/local/bin/python2
 ansible_ssh_user: freebsd
 
 pf_open_ports:
+  - ssh
   - smtps
   - pop3s
 
