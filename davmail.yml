@@ -1,5 +1,7 @@
 - hosts:
     - davmail
   roles:
+    - openssh
     - pf
     - davmail
+    - aliases
