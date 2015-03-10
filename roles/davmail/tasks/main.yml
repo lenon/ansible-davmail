@@ -9,6 +9,18 @@
   sudo: yes
   notify: restart davmail
 
+- name: protect davmail directory
+  file: path=/usr/local/etc/davmail state=directory mode=0700
+  sudo: yes
+
+- name: protect davmail cert
+  file: path={{ davmail_pkcs12_key }} state=file mode=0600
+  sudo: yes
+
+- name: protect davmail properties
+  file: path=/usr/local/etc/davmail.properties state=file mode=0600
+  sudo: yes
+
 - name: enable davmail on boot
   service: name=davmail state=started enabled=yes
   sudo: yes
