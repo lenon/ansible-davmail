@@ -19,6 +19,11 @@ Outlook/Exchange-based solution.
 * [Ansible][ansible].
 * An Outlook mail server.
 
+### Gmail users
+
+Gmail no longer accepts POP3 connections with self-signed SSL certs. So you must
+have a certificate issued by a Certificate Authority (CA).
+
 ## Usage
 
 Run the following command (as root on your VPS) to create a PKCS12 key:
