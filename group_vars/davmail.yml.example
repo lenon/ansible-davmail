@@ -9,3 +9,6 @@ davmail_url: https://outlook.yourcompany.com/owa/
 davmail_pop_port: 995
 davmail_pkcs12_pass: password
 davmail_pkcs12_key: /usr/local/etc/davmail/davmail.p12
+
+aliases:
+  - { user: root, alias: foo@example.com }

@@ -1,3 +1,6 @@
 [submodule "roles/pf"]
 	path = roles/pf
 	url = git@github.com:lenon/ansible-pf.git
+[submodule "roles/aliases"]
+	path = roles/aliases
+	url = git@github.com:lenon/ansible-aliases.git
