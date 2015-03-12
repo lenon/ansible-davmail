@@ -12,3 +12,9 @@ davmail_pkcs12_key: /usr/local/etc/davmail/davmail.p12
 
 aliases:
   - { user: root, alias: foo@example.com }
+
+monit_check_processes:
+  - name: davmail
+    pidfile: /var/run/davmail.pid
+    start: /usr/sbin/service davmail start
+    stop: /usr/sbin/service davmail start

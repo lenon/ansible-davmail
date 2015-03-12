@@ -7,3 +7,6 @@
 [submodule "roles/openssh"]
 	path = roles/openssh
 	url = git@github.com:lenon/ansible-openssh.git
+[submodule "roles/monit"]
+	path = roles/monit
+	url = git@github.com:lenon/ansible-monit.git
