@@ -1,5 +1,6 @@
 - hosts:
     - davmail
+  sudo: yes
   roles:
     - openssh
     - pf
