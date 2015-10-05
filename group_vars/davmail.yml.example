@@ -1,20 +1,8 @@
 ansible_python_interpreter: /usr/local/bin/python2
 ansible_ssh_user: freebsd
 
-pf_open_ports:
-  - ssh
-  - pop3s
-
 davmail_url: https://outlook.yourcompany.com/owa/
-davmail_pop_port: 995
 davmail_pkcs12_pass: password
-davmail_pkcs12_key: /usr/local/etc/davmail/davmail.p12
 
 aliases:
   - { user: root, alias: foo@example.com }
-
-monit_check_processes:
-  - name: davmail
-    pidfile: /var/run/davmail.pid
-    start: /usr/sbin/service davmail start
-    stop: /usr/sbin/service davmail start

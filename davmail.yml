@@ -1,8 +1,16 @@
-- hosts:
-    - davmail
+- hosts: davmail
   sudo: yes
   roles:
-    - openssh
-    - pf
-    - davmail
-    - aliases
+    - role: openssh
+    - role: pf
+      pf_open_ports:
+        - ssh
+        - pop3s
+    - role: davmail
+    - role: monit
+      monit_check_processes:
+        - name: davmail
+          pidfile: '{{ davmail_pid_file }}'
+          start: /usr/sbin/service davmail start
+          stop: /usr/sbin/service davmail stop
+    - role: aliases
