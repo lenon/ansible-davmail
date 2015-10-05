@@ -1,0 +1,32 @@
+#!/bin/sh
+# {{ ansible_managed }}
+
+# $FreeBSD: head/mail/davmail/files/davmail.in 360324 2014-07-02 23:53:20Z jkim $
+#
+# PROVIDE: davmail
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf or /etc/rc.conf.local to
+# enable davmail:
+# davmail_enable (bool):	Set to "NO" by default.
+# davmail_config (path):	Set to
+#				"/usr/local/etc/davmail.properties"
+#				by default
+
+. /etc/rc.subr
+
+name="davmail"
+rcvar=davmail_enable
+
+load_rc_config ${name}
+
+: ${davmail_enable="NO"}
+: ${davmail_config="{{ davmail_config }}"}
+: ${davmail_user="{{ davmail_user }}"}
+
+pidfile="{{ davmail_pids_dir }}/davmail.pid"
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} /usr/local/bin/davmail ${davmail_config}"
+
+run_rc_command "$1"

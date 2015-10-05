@@ -1,0 +1,10 @@
+davmail_user: davmail
+davmail_logs_dir: /var/log/davmail
+davmail_pids_dir: /var/run/davmail
+davmail_pid_file: '{{ davmail_pids_dir }}/davmail.pid'
+davmail_etc_dir: /usr/local/etc/davmail
+davmail_config: /usr/local/etc/davmail.properties
+davmail_pkcs12_key: '{{ davmail_etc_dir }}/davmail.p12'
+davmail_pkcs12_pass: password
+davmail_url: http://example.com
+davmail_pop_port: 995

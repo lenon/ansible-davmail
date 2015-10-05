@@ -1,20 +1,35 @@
+---
 - name: install davmail package
   pkgng: name=davmail
 
-- name: copy davmail config
-  template: src=davmail.properties.j2
-            dest=/usr/local/etc/davmail.properties
-            owner=root group=wheel mode=0644
+- name: create an user for davmail
+  user: name={{ davmail_user }} createhome=no
+
+- name: set permissions for required directories
+  file: path={{ item }} state=directory owner={{ davmail_user }} recurse=yes
+  with_items:
+    - '{{ davmail_logs_dir }}'
+    - '{{ davmail_pids_dir }}'
+    - '{{ davmail_etc_dir }}'
+
+- name: make sure the pkcs12 file is readable by davmail
+  file: path={{ davmail_pkcs12_key }} owner={{ davmail_user }} mode=0400
+
+- name: copy davmail init script
+  template:
+    src: davmail.rc.j2
+    dest: /usr/local/etc/rc.d/davmail
+    owner: root
+    mode: 0555
   notify: restart davmail
 
-- name: protect davmail directory
-  file: path=/usr/local/etc/davmail state=directory mode=0700
-
-- name: protect davmail cert
-  file: path={{ davmail_pkcs12_key }} state=file mode=0600
-
-- name: protect davmail properties
-  file: path=/usr/local/etc/davmail.properties state=file mode=0600
+- name: copy davmail config
+  template:
+    src: davmail.properties.j2
+    dest: '{{ davmail_config }}'
+    owner: root
+    mode: 0644
+  notify: restart davmail
 
 - name: enable davmail on boot
   service: name=davmail state=started enabled=yes
