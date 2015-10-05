@@ -1,7 +1,7 @@
-# ansible-davmail
+# owa-to-pop3
 
 Suppose that you work for a company that uses Outlook as their email solution.
-If you want to sync this email account with another client (like Gmail or
+If you want to sync your email account with another client (like Gmail or
 Fastmail), you can do it using POP3. But if the POP3 access is disabled, you're
 almost out of luck. Unless if you use something like [DavMail][davmail].
 
@@ -9,9 +9,8 @@ almost out of luck. Unless if you use something like [DavMail][davmail].
 > to use any mail/calendar client (e.g. Thunderbird with Lightning or Apple
 > iCal) with an Exchange server.
 
-This repo is an Ansible playbook that installs DavMail on a VPS (in my case a
-server running FreeBSD), creating a POP3, SMTP and CalDAV proxy for any
-Outlook/Exchange-based solution.
+This repo is an Ansible playbook that installs DavMail on a VPS running FreeBSD,
+creating a POP3 proxy for any Outlook/Exchange-based email.
 
 ## Requirements
 
@@ -19,14 +18,15 @@ Outlook/Exchange-based solution.
 * [Ansible][ansible].
 * An Outlook mail server.
 
-### Gmail users
+## Gmail users
 
 Gmail no longer accepts POP3 connections with self-signed SSL certs. So you must
-have a certificate issued by a Certificate Authority (CA).
+have a certificate issued by a valid Certificate Authority (CA).
 
 ## Usage
 
-Run the following command (as root on your VPS) to create a PKCS12 key:
+First you must have a PKCS12 key in your VPS. You can create one with the
+following command:
 
 ```
 keytool -genkey -keyalg rsa -keysize 2048 -storepass <password> \
