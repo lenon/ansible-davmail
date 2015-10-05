@@ -3,6 +3,7 @@ ansible_ssh_user: freebsd
 
 davmail_url: https://outlook.yourcompany.com/owa/
 davmail_pkcs12_pass: password
+davmail_pop_port: 2110
 
 aliases:
   - { user: root, alias: foo@example.com }

@@ -5,7 +5,7 @@
     - role: pf
       pf_open_ports:
         - ssh
-        - pop3s
+        - '{{ davmail_pop_port }}'
     - role: davmail
     - role: monit
       monit_check_processes:
